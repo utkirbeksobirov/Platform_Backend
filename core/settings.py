@@ -13,6 +13,8 @@ from pathlib import Path
 import os
 import environ
 from datetime import timedelta
+import logging
+
 env = environ.Env()
 environ.Env.read_env()
 
@@ -28,7 +30,9 @@ DEBUG = False
 DOMAIN = os.environ.get('DOMAIN')
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+
+WEBSITE_URL = os.environ.get('WEBSITE_URL')
 
 
 DJANGO_APPS = [
@@ -69,6 +73,42 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+SITE_ID = 1
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-width',
+]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    f"https://{WEBSITE_URL}",
+    f"http://{WEBSITE_URL}",
+    f"http://localhost:8000",
+    f"http://127.0.0.1:8000",
+
+]
+CSRF_TRUSTED_ORIGINS = [
+    f"https://{WEBSITE_URL}",
+    f"http://{WEBSITE_URL},"
+]
+
+SESSION_COOKIE_DOMAIN = WEBSITE_URL
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_BROWSER_XSS_FILTER = True
+
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
 ROOT_URLCONF = 'core.urls'
 
@@ -241,5 +281,64 @@ CORS_ALLOWED_ORIGINS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 AUTH_USER_MODEL = "users.User"
+
+
+LOGGING = {
+    "version": 1,
+    "disable_exiting_loggers": False,
+    "filters": {
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
+        },
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+
+    },
+    "formatters": {
+        "django.server": {
+            "()": "django.utils.log.ServerFormatter",
+            "format": "[%(server_time)s] %(message)s",
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "filters": ["require_debug_false"],
+            "class": "logging.StreamHandler",
+        },
+        "django.server": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "django.server",
+        },
+
+        "mail_admins": {
+            "level": "ERROR",
+            "filters": ["require_debug_false"],
+            "class": "django.utils.log.AdminEmailHandler",
+        },
+
+        "logfile": {
+            "class": "logging.FileHandler",
+            "filename": "server.log",
+        },
+    },
+
+    "loggers": {
+        "django": {
+            "handlers": [
+                "console",
+                "console_debug_false",
+                "logfile",
+            ],
+            "level": "INFO",
+        },
+        "django.server": {
+            "handlers": ["django.server"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}

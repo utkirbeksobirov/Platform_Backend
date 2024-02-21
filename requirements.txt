@@ -51,3 +51,6 @@ yarl==1.9.3
 django-storages 
 boto3
 environs
+python-dotenv
+django-compressor
+dj-database-url
