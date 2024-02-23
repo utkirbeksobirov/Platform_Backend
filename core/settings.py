@@ -14,6 +14,9 @@ import os
 import environ
 from datetime import timedelta
 import logging
+import dj_database_url
+import sys
+from dotenv import load_dotenv
 
 env = environ.Env()
 environ.Env.read_env()
@@ -21,6 +24,8 @@ environ.Env.read_env()
 ENVIRONMENT = env
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv()
 
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -132,16 +137,20 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # database setup
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'core',
-        'USER': 'dbadmin',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+if DEBUG is True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
 }
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 POSTGRES_DB = os.environ.get("POSTGRES_DB")
 POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
