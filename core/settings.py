@@ -225,6 +225,8 @@ MEDIA_DIR = BASE_DIR / 'media'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 STATIC_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
 MEDIA_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
 
