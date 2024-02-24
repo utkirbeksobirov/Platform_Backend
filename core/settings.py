@@ -221,6 +221,8 @@ AWS_QUERYSTRING_EXPIRE = 5
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+
+
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 STATICFILES_DIR = [os.path.join(BASE_DIR, "static")]
@@ -228,6 +230,13 @@ STATICFILES_DIR = [os.path.join(BASE_DIR, "static")]
 MEDIA_DIR = BASE_DIR / 'media'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+STORAGES = {
+    
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
