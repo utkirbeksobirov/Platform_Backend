@@ -1,7 +1,6 @@
 from .cdn.conf import(
     AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY,
-    AWS_S3_SIGNATURE_VERSION,
     AWS_ENDPOINT,
     AWS_STORAGE_BUCKET_NAME,
     AWS_ENDPOINT_URL,
@@ -13,7 +12,6 @@ from pathlib import Path
 import os
 import environ
 from datetime import timedelta
-import logging
 import dj_database_url
 import sys
 from dotenv import load_dotenv
@@ -296,61 +294,61 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "users.User"
 
 
-LOGGING = {
-    "version": 1,
-    "disable_exiting_loggers": False,
-    "filters": {
-        "require_debug_false": {
-            "()": "django.utils.log.RequireDebugFalse",
-        },
-        "require_debug_true": {
-            "()": "django.utils.log.RequireDebugTrue",
-        },
+# LOGGING = {
+#     "version": 1,
+#     "disable_exiting_loggers": False,
+#     "filters": {
+#         "require_debug_false": {
+#             "()": "django.utils.log.RequireDebugFalse",
+#         },
+#         "require_debug_true": {
+#             "()": "django.utils.log.RequireDebugTrue",
+#         },
 
-    },
-    "formatters": {
-        "django.server": {
-            "()": "django.utils.log.ServerFormatter",
-            "format": "[%(server_time)s] %(message)s",
-        }
-    },
-    "handlers": {
-        "console": {
-            "level": "INFO",
-            "filters": ["require_debug_false"],
-            "class": "logging.StreamHandler",
-        },
-        "django.server": {
-            "level": "INFO",
-            "class": "logging.StreamHandler",
-            "formatter": "django.server",
-        },
+#     },
+#     "formatters": {
+#         "django.server": {
+#             "()": "django.utils.log.ServerFormatter",
+#             "format": "[%(server_time)s] %(message)s",
+#         }
+#     },
+#     "handlers": {
+#         "console": {
+#             "level": "INFO",
+#             "filters": ["require_debug_false"],
+#             "class": "logging.StreamHandler",
+#         },
+#         "django.server": {
+#             "level": "INFO",
+#             "class": "logging.StreamHandler",
+#             "formatter": "django.server",
+#         },
 
-        "mail_admins": {
-            "level": "ERROR",
-            "filters": ["require_debug_false"],
-            "class": "django.utils.log.AdminEmailHandler",
-        },
+#         "mail_admins": {
+#             "level": "ERROR",
+#             "filters": ["require_debug_false"],
+#             "class": "django.utils.log.AdminEmailHandler",
+#         },
 
-        "logfile": {
-            "class": "logging.FileHandler",
-            "filename": "server.log",
-        },
-    },
+#         "logfile": {
+#             "class": "logging.FileHandler",
+#             "filename": "server.log",
+#         },
+#     },
 
-    "loggers": {
-        "django": {
-            "handlers": [
-                "console",
-                "console_debug_false",
-                "logfile",
-            ],
-            "level": "INFO",
-        },
-        "django.server": {
-            "handlers": ["django.server"],
-            "level": "INFO",
-            "propagate": False,
-        },
-    },
-}
+#     "loggers": {
+#         "django": {
+#             "handlers": [
+#                 "console",
+#                 "console_debug_false",
+#                 "logfile",
+#             ],
+#             "level": "INFO",
+#         },
+#         "django.server": {
+#             "handlers": ["django.server"],
+#             "level": "INFO",
+#             "propagate": False,
+#         },
+#     },
+# }
