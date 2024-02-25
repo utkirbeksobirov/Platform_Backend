@@ -218,18 +218,13 @@ AWS_S3_OBJECT_PARAMETERS = AWS_S3_OBJECT_PARAMETERS
 AWS_LOCATION = AWS_STORAGE_BUCKET_NAME
 AWS_QUERYSTRING_EXPIRE = 5
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-
-
-
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-MEDIA_DIRS = BASE_DIR / 'media'
-MEDIA_ROOT = MEDIA_DIRS
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+MEDIA_URL = "/media/"
+MEDIAFILES_DIRS = [os.path.join(BASE_DIR, "media")]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
