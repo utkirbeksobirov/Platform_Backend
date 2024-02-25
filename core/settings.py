@@ -228,8 +228,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-STATIC_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
-MEDIA_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
+DEFAULT_FILE_STORAGE = 'core.s3utils.MediaRootS3BotoStorage'
+STATICFILES_STORAGE = 'core.s3utils.StaticRootS3BotoStorage'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
