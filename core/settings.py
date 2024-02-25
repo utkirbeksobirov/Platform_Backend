@@ -231,17 +231,10 @@ MEDIA_DIR = BASE_DIR / 'media'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-STORAGES = {
-    
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
-
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATIC_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
-MEDIA_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
+MEDIA_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_MEDIA_LOCATION)
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
