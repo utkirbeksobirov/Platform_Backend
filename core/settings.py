@@ -143,7 +143,7 @@ if DEBUG is True:
             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
 }
-elif len(sys.argv) > 0 and sys.argv[1] != "":
+elif len(sys.argv) > 0 and sys.argv[1] != "static":
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
