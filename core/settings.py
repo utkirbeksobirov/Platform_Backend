@@ -146,8 +146,8 @@ if DEBUG is True:
 elif len(sys.argv) > 0 and sys.argv[1] != "collectstatic":
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
-    DATABASES = {
-        "default": 'dj_database_url.parse(os.environ.get(DATABASE_URL))',
+    DATABASE = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
     }
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
