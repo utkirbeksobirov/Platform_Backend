@@ -1,4 +1,4 @@
-@import url("widgets.0a3765e806b3.css");
+@import url("widgets.ee33ab26c7c2.css");
 
 /* FORM ROWS */
 
@@ -24,6 +24,9 @@ form .form-row p {
 
 .flex-container {
     display: flex;
+}
+
+.form-multiline {
     flex-wrap: wrap;
 }
 
@@ -78,6 +81,7 @@ form ul.inline li {
 .aligned label {
     display: block;
     padding: 4px 10px 0 0;
+    min-width: 160px;
     width: 160px;
     word-wrap: break-word;
     line-height: 1;
