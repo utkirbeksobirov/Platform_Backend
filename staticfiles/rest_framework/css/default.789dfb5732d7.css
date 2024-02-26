@@ -1,5 +1,3 @@
-/* The navbar is fixed at >= 980px wide, so add padding to the body to prevent
-content running up underneath it. */
 
 h1 {
   font-weight: 300;
@@ -48,7 +46,6 @@ form select[multiple] {
   height: 150px;
 }
 
-/* To allow tooltips to work on disabled elements */
 .disabled-tooltip-shield {
   position: absolute;
   top: 0;

@@ -8,14 +8,12 @@ class ModulAdmin(admin.ModelAdmin):
     list_filter = ('name',)
 
 
-admin.site.register(ModulClass, ModulAdmin)
-
-
 class VideoAppAdmin(admin.ModelAdmin):
     list_display = ('id', 'modul', 'name',)
     list_display_links = ('id', 'modul', 'name',)
     list_filter = ('name',)
 
 
+admin.site.register(ModulClass, ModulAdmin)
 admin.site.register(VideoApp, VideoAppAdmin)
 admin.site.register(Comment)

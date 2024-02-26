@@ -137,45 +137,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # database setup
-DATABASES={
-    'default':{
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'defaultdb',
-        'USER':'doadmin',
-        'PASSWORD':'AVNS_ocsk8ND3TYjrIC-KZmO',
-        'HOST':'db-postgresql-fra1-39659-do-user-15829099-0.c.db.ondigitalocean.com',
-        'PORT':'25060',
-        'sslmode' :'require',
-   }
+if DEBUG is True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
 }
-
-# POSTGRES_DB = os.environ.get("POSTGRES_DB")
-# POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
-# POSTGRES_USER = os.environ.get("POSTGRES_USER")
-# POSTGRES_HOST = os.environ.get("POSTGRES_HOST")
-# POSTGRES_PORT = os.environ.get("POSTGRES_PORT")
-
-
-# POSTGRES_READY = (
-#     POSTGRES_DB is not None
-#     and POSTGRES_PASSWORD is not None
-#     and POSTGRES_USER is not None
-#     and POSTGRES_HOST is not None
-#     and POSTGRES_PORT is not None
-# )
-
-
-# if POSTGRES_READY:
-#     DATABASES = {
-#         "default": {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             "NAME": POSTGRES_DB,
-#             "USER": POSTGRES_USER,
-#             "PASSWORD": POSTGRES_PASSWORD,
-#             "HOST": POSTGRES_HOST,
-#             "PORT": POSTGRES_PORT,
-#         }
-#     }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -204,6 +178,36 @@ USE_TZ = True
 
 
 # STATIC
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = "/static/"
+STATICFILES_DIR = os.path.join(BASE_DIR, "static")
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
+
+
+AWS_LOCATION_STATIC = 'static'
+AWS_LOCATION_MEDIA = 'media'
+
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, "static"),
+]
+MEDIAFILES_DIRS = [
+    os.path.join(BASE_DIR, 'media'),
+]
+
+STATICFILES_STORAGE = STATICFILES_STORAGE
+DEFAULT_FILE_STORAGE = DEFAULT_FILE_STORAGE
+
+AWS_ENABLED = True
+AWS_S3_SECURE_URLS = True
+
+
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 3000
 FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 3000
 
@@ -215,32 +219,6 @@ AWS_S3_ENDPOINT_URL = AWS_ENDPOINT_URL
 AWS_S3_OBJECT_PARAMETERS = AWS_S3_OBJECT_PARAMETERS
 AWS_LOCATION = AWS_STORAGE_BUCKET_NAME
 AWS_QUERYSTRING_EXPIRE = 5
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATIC_URL = "/static/"
-STATICFILES_DIRS = os.path.join(BASE_DIR, "/static/")
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = "/media/"
-
-#STATIC_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
-#MEDIA_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-MEDIAFILES_DIRS = [
-    os.path.join(BASE_DIR, 'media'),
-]
-
-STATICFILES_STORAGE = STATICFILES_STORAGE
-DEFAULT_FILE_STORAGE = DEFAULT_FILE_STORAGE
-
-AWS_ENABLED = True
-AWS_S3_SECURE_URLS = True
 
 
 # rest-faramework
@@ -268,7 +246,6 @@ SIMPLE_JWT = {
 
 
 # cors
-
 FRONTEND_IP = os.environ.get('FRONTEND_IP')
 FRONTEND = os.environ.get('FRONTEND')
 BACKEND_IP = os.environ.get('BACKEND_IP')
