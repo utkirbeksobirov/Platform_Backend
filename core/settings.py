@@ -136,20 +136,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # database setup
-if DEBUG is True:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
+DATABASES={
+'default':{
+'ENGINE':'django.db.backends.postgresql_psycopg2',
+'NAME':'defaultdb',
+'USER':'doadmin',
+'PASSWORD':'AVNS_ocsk8ND3TYjrIC-KZmO',
+'HOST':'db-postgresql-fra1-39659-do-user-15829099-0.c.db.ondigitalocean.com',
+      
+      'PORT':'25060',
+   
+      'sslmode' :'require',
+   }
 }
-elif len(sys.argv) > 0 and sys.argv[1] != "collectstatic":
-    if os.getenv("DATABASE_URL", None) is None:
-        raise Exception("DATABASE_URL environment variable not defined")
-    DATABASE = {
-        "default": dj_database_url.parse(os.environ.get('DATABASE_URL')),
-    }
-DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 # POSTGRES_DB = os.environ.get("POSTGRES_DB")
 # POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
