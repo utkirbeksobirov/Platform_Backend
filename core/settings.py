@@ -98,9 +98,10 @@ CORS_ALLOWED_ORIGINS = [
     f"http://127.0.0.1:8000",
 
 ]
+
 CSRF_TRUSTED_ORIGINS = [
     f"https://{WEBSITE_URL}",
-    f"http://{WEBSITE_URL},"
+    f"http://{WEBSITE_URL}",
 ]
 
 SESSION_COOKIE_DOMAIN = WEBSITE_URL
@@ -137,16 +138,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # database setup
 DATABASES={
-'default':{
-'ENGINE':'django.db.backends.postgresql_psycopg2',
-'NAME':'defaultdb',
-'USER':'doadmin',
-'PASSWORD':'AVNS_ocsk8ND3TYjrIC-KZmO',
-'HOST':'db-postgresql-fra1-39659-do-user-15829099-0.c.db.ondigitalocean.com',
-      
-      'PORT':'25060',
-   
-      'sslmode' :'require',
+    'default':{
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME':'defaultdb',
+        'USER':'doadmin',
+        'PASSWORD':'AVNS_ocsk8ND3TYjrIC-KZmO',
+        'HOST':'db-postgresql-fra1-39659-do-user-15829099-0.c.db.ondigitalocean.com',
+        'PORT':'25060',
+        'sslmode' :'require',
    }
 }
 
