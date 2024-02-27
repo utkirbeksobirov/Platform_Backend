@@ -137,17 +137,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # database setup
-DATABASES={
-    'default':{
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'defaultdb',
-        'USER':'doadmin',
-        'PASSWORD':'AVNS_ocsk8ND3TYjrIC-KZmO',
-        'HOST':'db-postgresql-fra1-39659-do-user-15829099-0.c.db.ondigitalocean.com',
-        'PORT':'25060',
-        'sslmode' :'require',
-   }
-}
+if DEBUG is True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -260,17 +262,18 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    FRONTEND,
-    FRONTEND_IP,
-    BACKEND,
-    BACKEND_IP,
+    'http://127.0.0.1',
+    'https://frontend-bice-sigma.vercel.app',
+    'http://localhost:5173',
+    'https://walrus-app-8p5bd.ondigitalocean.app',
 ]
 
+
 CORS_ALLOWED_ORIGINS = [
-    FRONTEND,
-    FRONTEND_IP,
-    BACKEND,
-    BACKEND_IP,
+    'http://127.0.0.1',
+    'https://frontend-bice-sigma.vercel.app',
+    'http://localhost:5173',
+    'https://walrus-app-8p5bd.ondigitalocean.app',
 ]
 
 
