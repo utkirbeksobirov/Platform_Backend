@@ -29,7 +29,7 @@ load_dotenv()
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 DOMAIN = os.environ.get('DOMAIN')
 
@@ -177,13 +177,12 @@ USE_TZ = True
 
 # STATIC
 
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
-STATICFILES_DIR = os.path.join(BASE_DIR, "static")
+STATICFILES_DIR = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
@@ -206,6 +205,9 @@ AWS_ENABLED = True
 AWS_S3_SECURE_URLS = True
 
 
+# STATIC_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION_STATIC)
+# MEDIA_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION_MEDIA)
+
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 3000
 FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 3000
 
@@ -213,6 +215,7 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 3000
 AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
 AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
+AWS_ENDPOINT = AWS_ENDPOINT
 AWS_S3_ENDPOINT_URL = AWS_ENDPOINT_URL
 AWS_S3_OBJECT_PARAMETERS = AWS_S3_OBJECT_PARAMETERS
 AWS_LOCATION = AWS_STORAGE_BUCKET_NAME
