@@ -249,16 +249,11 @@ SIMPLE_JWT = {
 
 
 # cors
-FRONTEND_IP = os.environ.get('FRONTEND_IP')
-FRONTEND = os.environ.get('FRONTEND')
-BACKEND_IP = os.environ.get('BACKEND_IP')
-BACKEND = os.environ.get('BACKEND')
-
 CORS_ORIGIN_WHITELIST = [
-    FRONTEND,
-    FRONTEND_IP,
-    BACKEND,
-    BACKEND_IP,
+    'https://frontend-bice-sigma.vercel.app',
+    'http://localhost:5173',
+    'https://walrus-app-8p5bd.ondigitalocean.app',
+    'http://127.0.0.1',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
