@@ -1,6 +1,7 @@
 from .cdn.conf import(
     AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY,
+    AWS_ENDPOINT,
     AWS_ENDPOINT_URL,
     AWS_STORAGE_BUCKET_NAME,
     AWS_S3_OBJECT_PARAMETERS,
@@ -117,7 +118,6 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -139,16 +139,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # database setup
-DATABASES={
-    'default':{
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'defaultdb',
-        'USER':'doadmin',
-        'PASSWORD':'AVNS_ocsk8ND3TYjrIC-KZmO',
-        'HOST':'db-postgresql-fra1-39659-do-user-15829099-0.c.db.ondigitalocean.com',
-        'PORT':'25060',
-        'sslmode' :'require',
-   }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # Path to the SQLite3 database file
+    }
 }
 
 
@@ -208,19 +203,20 @@ AWS_ENABLED = True
 AWS_S3_SECURE_URLS = True
 
 
-#STATIC_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION_STATIC)
-#MEDIA_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION_MEDIA)
-
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 3000
 FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 3000
 
 AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
 AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
+AWS_ENDPOINT = AWS_ENDPOINT
 AWS_ENDPOINT_URL = AWS_ENDPOINT_URL
 AWS_S3_OBJECT_PARAMETERS = AWS_S3_OBJECT_PARAMETERS
 AWS_LOCATION = AWS_STORAGE_BUCKET_NAME
 AWS_QUERYSTRING_EXPIRE = 5
+
+# STATIC_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
+# MEDIA_URL = 'https://%s/%s/' % (AWS_ENDPOINT, AWS_LOCATION)
 
 
 # rest-faramework
