@@ -1,13 +1,3 @@
-from .cdn.conf import(
-    AWS_ACCESS_KEY_ID,
-    AWS_SECRET_ACCESS_KEY,
-    AWS_ENDPOINT,
-    AWS_ENDPOINT_URL,
-    AWS_STORAGE_BUCKET_NAME,
-    AWS_S3_OBJECT_PARAMETERS,
-    DEFAULT_FILE_STORAGE,
-    STATICFILES_STORAGE,
-)
 from pathlib import Path
 import os
 import logging
@@ -139,11 +129,16 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # database setup
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+DATABASES={
+    'default':{
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME':'defaultdb',
+        'USER':'doadmin',
+        'PASSWORD':'AVNS_ocsk8ND3TYjrIC-KZmO',
+        'HOST':'db-postgresql-fra1-39659-do-user-15829099-0.c.db.ondigitalocean.com',
+        'PORT':'25060',
+        'sslmode' :'require',
+   }
 }
 
 
@@ -196,8 +191,7 @@ MEDIAFILES_DIRS = [
     os.path.join(BASE_DIR, 'media'),
 ]
 
-STATICFILES_STORAGE = STATICFILES_STORAGE
-DEFAULT_FILE_STORAGE = DEFAULT_FILE_STORAGE
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 AWS_ENABLED = True
 AWS_S3_SECURE_URLS = True
@@ -206,13 +200,17 @@ AWS_S3_SECURE_URLS = True
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 3000
 FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 3000
 
-AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
-AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
-AWS_ENDPOINT = AWS_ENDPOINT
-AWS_ENDPOINT_URL = AWS_ENDPOINT_URL
-AWS_S3_OBJECT_PARAMETERS = AWS_S3_OBJECT_PARAMETERS
-AWS_LOCATION = AWS_STORAGE_BUCKET_NAME
+AWS_ACCESS_KEY_ID = 'AKIA4MTWMNE24K2W7ZEJ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'bucket-video-aws'
+AWS_S3_SIGNATURE_NAME = 's3v4'
+AWS_S3_REGION_NAME = 'ap-southeast-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": "max-age=86400",
+}
 AWS_QUERYSTRING_EXPIRE = 5
 
 
