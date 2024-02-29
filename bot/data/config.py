@@ -1,9 +1,3 @@
-from environs import Env
-
-env = Env()
-env.read_env()
-
-BOT_TOKEN = env.str("BOT_TOKEN")
-ADMINS = env.list("ADMINS")
-ADDRES = env.str("ADDRES")
-IP = env.str("ip")
+BOT_TOKEN = '6279484912:AAEwbq7se3R3xUWKmMIh9OOp-h8IW6OSGiI'
+ADMINS = [1776054971]  # add your id [21421342,243124134]
+ADDRES = 'https://walrus-app-8p5bd.ondigitalocean.app/'
