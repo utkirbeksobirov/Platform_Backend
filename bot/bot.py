@@ -38,10 +38,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if usr.status_code == 201:
         user = update.effective_user
         await update.message.reply_html(
-            rf"Salom, xush kelibsiz {user.mention_html()}!")
+            rf"Salom NoxonFx Botiga Xush Kelibsiz {user.mention_html()}!")
     else:
         await update.message.reply_html(
-            rf"Ushbu hisob allaqachon yaratilgan!")
+            rf"Ushbu Hisob Oldin yaratilgan!")
 
 
 async def login_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -49,7 +49,7 @@ async def login_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     if usr.status_code == 200:
         await update.message.reply_text(f"<b>Kod:</b> {usr.text}", parse_mode=ParseMode.HTML)
     elif usr.status_code == 400:
-        await update.message.reply_text(f"<b>Xatolik:</b> {usr.text}", parse_mode=ParseMode.HTML)
+        await update.message.reply_text(f"<b>Xatolik:</b> Serverda So'rovlar Soni Oshib Ketti", parse_mode=ParseMode.HTML)
     else:
         await update.message.reply_text("<b>Xolat:</b> siz to'lov qilmagansiz!", parse_mode=ParseMode.HTML)
 
@@ -71,7 +71,7 @@ def main() -> None:
         ApplicationBuilder()
         .token(BOT_TOKEN)
         .concurrent_updates(True)
-        .rate_limiter(AIORateLimiter(max_retries=5))
+        .rate_limiter(AIORateLimiter(max_retries=10))
         .http_version("1.1")
         .get_updates_http_version("1.1")
         .post_init(post_init)

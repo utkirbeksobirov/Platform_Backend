@@ -1,5 +1,6 @@
 from django.db import models
 from apps.users.models import User
+from django.conf import settings
 
 
 class ModulClass(models.Model):
@@ -23,6 +24,10 @@ class VideoApp(models.Model):
     comment = models.ManyToManyField('Comment', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     marked_view = models.BooleanField(default=False)
+
+    def get_thumbnail(self):
+        if self.video:
+            return str(self.video.url)
 
     def __str__(self):
         return f"{self.modul} - {self.name}"
