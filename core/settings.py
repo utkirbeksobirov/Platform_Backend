@@ -142,7 +142,6 @@ DATABASES={
 }
 
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -240,30 +239,39 @@ SIMPLE_JWT = {
 
 
 # cors
-FRONTEND_IP = os.environ.get("FRONTEND_IP")
-FRONTEND = os.environ.get("FRONTEND")
-BACKEND_IP = os.environ.get("BACKEND_IP")
-BACKEND = os.environ.get("BACKEND")
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:5173/",
-    "https://frontend-bice-sigma.vercel.app/",
-    "http://127.0.0.1/",
-    "https://walrus-app-8p5bd.ondigitalocean.app/",
+    'http://127.0.0.1:8000',
+    'http://localhost:5173',
+    'https://walrus-app-8p5bd.ondigitalocean.app',
+    'http://frontend-bice-sigma.vercel.app',
+    'https://www.frontend-bice-sigma.vercel.app',
+    'https://frontend-bice-sigma.vercel.app',
+    'http://162.159.140.98',
+    'http://76.76.21.9',
 ]
 
+
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173/",
-    "https://frontend-bice-sigma.vercel.app/",
-    "http://127.0.0.1/",
-    "https://walrus-app-8p5bd.ondigitalocean.app/",
+    'http://127.0.0.1:8000',
+    'http://localhost:5173',
+    'https://walrus-app-8p5bd.ondigitalocean.app',
+    'http://frontend-bice-sigma.vercel.app',
+    'https://www.frontend-bice-sigma.vercel.app',
+    'https://frontend-bice-sigma.vercel.app',
+    'http://162.159.140.98',
+    'http://76.76.21.9',
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173/",
-    "https://frontend-bice-sigma.vercel.app/",
-    "http://127.0.0.1/",
-    "https://walrus-app-8p5bd.ondigitalocean.app/",
+    'http://127.0.0.1:8000',
+    'http://localhost:5173',
+    'https://walrus-app-8p5bd.ondigitalocean.app',
+    'http://frontend-bice-sigma.vercel.app',
+    'https://www.frontend-bice-sigma.vercel.app',
+    'https://frontend-bice-sigma.vercel.app',
+    'http://162.159.140.98',
+    'http://76.76.21.9',
 ]
 
 
