@@ -49,7 +49,7 @@ async def login_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     if usr.status_code == 200:
         await update.message.reply_text(f"<b>Kod:</b> {usr.text}", parse_mode=ParseMode.HTML)
     elif usr.status_code == 400:
-        await update.message.reply_text(f"<b>Xatolik:</b> Serverda So'rovlar Soni Oshib Ketti", parse_mode=ParseMode.HTML)
+        await update.message.reply_text(f"<b>Xatolik: Serverda So'rovlar Soni Oshib Ketti</b> {usr.text}", parse_mode=ParseMode.HTML)
     else:
         await update.message.reply_text("<b>Xolat:</b> siz to'lov qilmagansiz!", parse_mode=ParseMode.HTML)
 
