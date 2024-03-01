@@ -241,26 +241,26 @@ SIMPLE_JWT = {
 # cors
 
 CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:8000',
-    'http://localhost:5173',
-    'https://walrus-app-8p5bd.ondigitalocean.app',
-    'http://frontend-bice-sigma.vercel.app',
-    'https://www.frontend-bice-sigma.vercel.app',
-    'https://frontend-bice-sigma.vercel.app',
-    'http://162.159.140.98',
-    'http://76.76.21.9',
+    'http://127.0.0.1:8000/',
+    'http://localhost:5173/',
+    'https://walrus-app-8p5bd.ondigitalocean.app/',
+    'http://frontend-bice-sigma.vercel.app/',
+    'https://www.frontend-bice-sigma.vercel.app/',
+    'https://frontend-bice-sigma.vercel.app/',
+    'http://162.159.140.98/',
+    'http://76.76.21.9/',
 ]
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://127.0.0.1:8000',
-    'http://localhost:5173',
-    'https://walrus-app-8p5bd.ondigitalocean.app',
-    'http://frontend-bice-sigma.vercel.app',
-    'https://www.frontend-bice-sigma.vercel.app',
-    'https://frontend-bice-sigma.vercel.app',
-    'http://162.159.140.98',
-    'http://76.76.21.9',
+    'http://127.0.0.1:8000/',
+    'http://localhost:5173/',
+    'https://walrus-app-8p5bd.ondigitalocean.app/',
+    'http://frontend-bice-sigma.vercel.app/',
+    'https://www.frontend-bice-sigma.vercel.app/',
+    'https://frontend-bice-sigma.vercel.app/',
+    'http://162.159.140.98/',
+    'http://76.76.21.9/',
 ]
 
 CORS_ALLOWED_ORIGINS = [
