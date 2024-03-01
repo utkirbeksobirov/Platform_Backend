@@ -1,3 +1,4 @@
+from .cdn.conf import DEFAULT_FILE_STORAGE, STATICFILES_STORAGE
 from pathlib import Path
 import os
 import logging
@@ -129,16 +130,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # database setup
-DATABASES={
-    'default':{
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'defaultdb',
-        'USER':'doadmin',
-        'PASSWORD':'AVNS_ocsk8ND3TYjrIC-KZmO',
-        'HOST':'db-postgresql-fra1-39659-do-user-15829099-0.c.db.ondigitalocean.com',
-        'PORT':'25060',
-        'sslmode' :'require',
-   }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -210,9 +206,10 @@ AWS_S3_VERIFY = True
 AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": "max-age=86400",
 }
-AWS_QUERYSTRING_EXPIRE = 5
+AWS_QUERYSTRING_EXPIRE = 3600
 
-
+STATICFILES_STORAGE = STATICFILES_STORAGE
+DEFAULT_FILE_STORAGE = DEFAULT_FILE_STORAGE
 
 # rest-faramework
 REST_FRAMEWORK = {
