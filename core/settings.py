@@ -246,7 +246,6 @@ CORS_ORIGIN_WHITELIST = [
     'https://walrus-app-8p5bd.ondigitalocean.app',
     'http://frontend-bice-sigma.vercel.app',
     'https://www.frontend-bice-sigma.vercel.app',
-    'https://frontend-bice-sigma.vercel.app',
 ]
 
 
@@ -256,7 +255,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://walrus-app-8p5bd.ondigitalocean.app',
     'http://frontend-bice-sigma.vercel.app',
     'https://www.frontend-bice-sigma.vercel.app',
-    'https://frontend-bice-sigma.vercel.app',
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -265,7 +263,6 @@ CORS_ALLOWED_ORIGINS = [
     'https://walrus-app-8p5bd.ondigitalocean.app',
     'http://frontend-bice-sigma.vercel.app',
     'https://www.frontend-bice-sigma.vercel.app',
-    'https://frontend-bice-sigma.vercel.app',
 ]
 
 
