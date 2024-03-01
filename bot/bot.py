@@ -16,7 +16,7 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
 
-def save_user(message) -> int():
+def save_user(message) -> int(): # type: ignore
     post_data = {"username": str(message.from_user.id),
                  "first_name": str(message.from_user.first_name),
                  "last_name": str(message.from_user.last_name),
