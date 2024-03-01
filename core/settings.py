@@ -246,8 +246,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:8000',
     'http://localhost:5173',
     'https://walrus-app-8p5bd.ondigitalocean.app',
-    'http://frontend-bice-sigma.vercel.app',
-    'https://www.frontend-bice-sigma.vercel.app',
+    'http://frontend-iota-sepia.vercel.app',
+    'https://www.frontend-iota-sepia.vercel.app',
 ]
 
 
@@ -255,16 +255,16 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://localhost:5173',
     'https://walrus-app-8p5bd.ondigitalocean.app',
-    'http://frontend-bice-sigma.vercel.app',
-    'https://www.frontend-bice-sigma.vercel.app',
+    'http://frontend-iota-sepia.vercel.app',
+    'https://www.frontend-iota-sepia.vercel.app',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://localhost:5173',
     'https://walrus-app-8p5bd.ondigitalocean.app',
-    'http://frontend-bice-sigma.vercel.app',
-    'https://www.frontend-bice-sigma.vercel.app',
+    'http://frontend-iota-sepia.vercel.app',
+    'https://www.frontend-iota-sepia.vercel.app',
 ]
 
 
